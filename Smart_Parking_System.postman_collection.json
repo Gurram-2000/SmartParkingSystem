@@ -1,0 +1,268 @@
+{
+  "info": {
+    "_postman_id": "smart-parking-system",
+    "name": "Smart Parking System API",
+    "description": "Complete API collection for Smart Parking System",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health & Status",
+      "item": [
+        {
+          "name": "Health Check",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/parking/health",
+              "host": ["{{base_url}}"],
+              "path": ["api", "parking", "health"]
+            }
+          }
+        },
+        {
+          "name": "Get Parking Status",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/parking/status",
+              "host": ["{{base_url}}"],
+              "path": ["api", "parking", "status"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Vehicle Operations",
+      "item": [
+        {
+          "name": "Check-In Vehicle",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"licensePlate\": \"ABC-123\",\n  \"vehicleType\": \"car\",\n  \"entryPoint\": \"Gate-A\",\n  \"ownerName\": \"John Doe\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/parking/check-in",
+              "host": ["{{base_url}}"],
+              "path": ["api", "parking", "check-in"]
+            }
+          }
+        },
+        {
+          "name": "Check-Out Vehicle",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"licensePlate\": \"ABC-123\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/parking/check-out",
+              "host": ["{{base_url}}"],
+              "path": ["api", "parking", "check-out"]
+            }
+          }
+        },
+        {
+          "name": "Get Vehicle Status",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/parking/vehicle/ABC-123",
+              "host": ["{{base_url}}"],
+              "path": ["api", "parking", "vehicle", "ABC-123"]
+            }
+          }
+        },
+        {
+          "name": "Get Parking History",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/parking/history",
+              "host": ["{{base_url}}"],
+              "path": ["api", "parking", "history"]
+            }
+          }
+        },
+        {
+          "name": "Get Parking History - Completed",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/parking/history?status=completed",
+              "host": ["{{base_url}}"],
+              "path": ["api", "parking", "history"],
+              "query": [
+                {
+                  "key": "status",
+                  "value": "completed"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Parking History - By Vehicle Type",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/parking/history?vehicleType=car",
+              "host": ["{{base_url}}"],
+              "path": ["api", "parking", "history"],
+              "query": [
+                {
+                  "key": "vehicleType",
+                  "value": "car"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Reports",
+      "item": [
+        {
+          "name": "Daily Revenue Report",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/parking/reports/daily-revenue",
+              "host": ["{{base_url}}"],
+              "path": ["api", "parking", "reports", "daily-revenue"]
+            }
+          }
+        },
+        {
+          "name": "Daily Revenue Report - Specific Date",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/parking/reports/daily-revenue?date=2026-02-11",
+              "host": ["{{base_url}}"],
+              "path": ["api", "parking", "reports", "daily-revenue"],
+              "query": [
+                {
+                  "key": "date",
+                  "value": "2026-02-11"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Vehicle Statistics Report",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/parking/reports/vehicle-stats",
+              "host": ["{{base_url}}"],
+              "path": ["api", "parking", "reports", "vehicle-stats"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Error Examples",
+      "item": [
+        {
+          "name": "Error - Invalid Vehicle Type",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"licensePlate\": \"ERR-001\",\n  \"vehicleType\": \"airplane\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/parking/check-in",
+              "host": ["{{base_url}}"],
+              "path": ["api", "parking", "check-in"]
+            }
+          }
+        },
+        {
+          "name": "Error - Missing License Plate",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"vehicleType\": \"car\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/parking/check-in",
+              "host": ["{{base_url}}"],
+              "path": ["api", "parking", "check-in"]
+            }
+          }
+        },
+        {
+          "name": "Error - Vehicle Not Found",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"licensePlate\": \"NOTFOUND-999\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/parking/check-out",
+              "host": ["{{base_url}}"],
+              "path": ["api", "parking", "check-out"]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "localhost:3000",
+      "type": "string"
+    }
+  ]
+}

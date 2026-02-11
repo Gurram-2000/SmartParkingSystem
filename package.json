@@ -1,0 +1,36 @@
+{
+  "name": "smart-parking-system",
+  "version": "1.0.0",
+  "description": "Smart Parking Lot Management System",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "test": "jest --detectOpenHandles --forceExit --testTimeout=30000",
+    "test:run": "node run-tests.js",
+    "db:migrate": "node src/database/migrations.js",
+    "lint": "eslint src/"
+  },
+  "keywords": [
+    "parking",
+    "management",
+    "smart-system"
+  ],
+  "author": "Your Team",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "pg": "^8.10.0",
+    "dotenv": "^16.3.1",
+    "joi": "^17.11.0",
+    "cors": "^2.8.5",
+    "uuid": "^9.0.1",
+    "winston": "^3.11.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2",
+    "jest": "^29.7.0",
+    "supertest": "^6.3.3",
+    "eslint": "^8.54.0"
+  }
+}
